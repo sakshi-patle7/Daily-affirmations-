@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Daily Affirmations</title>
+
+  <!-- WhatsApp / Open Graph preview -->
+  <meta property="og:title" content="Daily Affirmations" />
+  <meta property="og:description" content="A little positivity for you 💛 (refresh for a new one)" />
+  <!-- After you deploy, replace YOUR_SITE_URL with your actual site URL (e.g., https://yourname.netlify.app) -->
+  <meta property="og:image" content="https://YOUR_SITE_URL/preview.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://YOUR_SITE_URL/" />
+
+  <style>
+    :root {
+      --bg: #faf7ff;
+      --card: #ffffff;
+      --text: #2e2a32;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      display: grid;
+      place-items: center;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+      background: radial-gradient(60% 80% at 30% 20%, #fff2f6 0%, var(--bg) 60%), radial-gradient(80% 60% at 70% 60%, #f1f7ff 0%, var(--bg) 60%);
+      color: var(--text);
+      padding: 24px;
+    }
+    .card {
+      width: min(640px, 96vw);
+      background: var(--card);
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(60, 20, 100, 0.08);
+      padding: 28px;
+      text-align: center;
+      transition: transform .2s ease;
+    }
+    .card:hover { transform: translateY(-2px); }
+    h1 {
+      font-size: 18px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      opacity: .65;
+      margin: 0 0 8px 0;
+    }
+    .affirmation {
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 600;
+      line-height: 1.25;
+      margin: 12px 0 18px;
+    }
+    .small {
+      font-size: 14px;
+      opacity: .6;
+      margin-bottom: 20px;
+    }
+    button {
+      appearance: none;
+      font-size: 16px;
+      padding: 10px 16px;
+      border-radius: 12px;
+      border: 1px solid #e5e0ff;
+      background: #f6f3ff;
+      cursor: pointer;
+    }
+    button:active { transform: translateY(1px); }
+    .footer {
+      margin-top: 22px;
+      font-size: 13px;
+      opacity: .6;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Daily Affirmations</h1>
+    <div id="line" class="affirmation">Loading…</div>
+    <div class="small">(refresh the page or tap the button 👇)</div>
+    <button id="next">New affirmation</button>
+    <div class="footer">Made with ♥ by Saksh</div>
+  </main>
+
+  <script>
+    const affirmations = [
+      "You are capable of amazing things🤠.",
+      "Every day is a fresh start😇.",
+      "Your potential is limitless.",
+      "You are enough, just as you are🥰.",
+      "You turn setbacks into setups.",
+      "Small steps add up to big wins😍.",
+      "You handle today with calm and clarity🫡.",
+      "You are loved, safe, and growing😙.",
+      "You learn fast and show up fully.",
+      "You deserve good things."
+    ];
+
+    function pickRandom(list) {
+      return list[Math.floor(Math.random() * list.length)];
+    }
+
+    function show() {
+      document.getElementById('line').textContent = pickRandom(affirmations);
+    }
+
+    document.getElementById('next').addEventListener('click', show);
+    // Show one on load
+    show();
+  </script>
+</body>
+</html>
